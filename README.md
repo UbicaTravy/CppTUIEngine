@@ -1,7 +1,9 @@
 # CppTUIEngine
 
 ![C++](https://img.shields.io/badge/C++-00599C?style=flat&logo=c%2B%2B&logoColor=white)
+![G++](https://img.shields.io/badge/G++-00599C?style=flat&logo=c%2B%2B&logoColor=white)
 <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Windows_logo_-_2012.svg" width="20" alt="Windows"/>
+
 
 [![Русский](https://img.shields.io/badge/README-Русский-blue)](README_ru.md)
 
@@ -13,7 +15,7 @@
 
 This is a simple C++ engine for creating Text User Interface (TUI). It combines speed and simplicity, but at the same time detailed customization of elements. It doesn't use any other libraries, just pure C++. Usable only for Windows.
 
-[Full documentation]()
+[![Documentation](https://img.shields.io/badge/Documentation-In_process-yellow?style=flat&logo=read-the-docs&logoColor=white)](https://github.com/your-repo/wiki)
 
 Here will be quick and superficial documentation on installation and use of the latest version of the engine
 
@@ -43,6 +45,8 @@ CppTUIEngine/
 ```
 
 ## Using
+
+To use the engine you need to install `g++` and have Windows7/8/10 (or any where you can install g++). The authors use `g++` version `14.2.0`.
 
 At the beginning of the file there are imports of headers and .cpp files of the engine, as well as Windows.h
 
@@ -113,13 +117,13 @@ int main() {
                 
                 if (selectedIdx == 0) {
                     clearScreen();
-                    show_text("Choised 1!", 
+                    show_text("Chosen 1!", 
                              (width - 20) / 2, height / 2);
                     _getch();
                 }
                 else if (selectedIdx == 1) {
                     clearScreen();
-                    show_text("Choised 2", 
+                    show_text("Chosen 2!", 
                              (width - 20) / 2, height / 2);
                     _getch();
                 }
@@ -165,14 +169,14 @@ Full code:
 
 void showOption1(int width, int height) {
     clearScreen();
-    show_text("You choised 1!", (width - 22) / 2, height / 2);
+    show_text("You Chosen 1!", (width - 22) / 2, height / 2);
     show_text("Press any key...", (width - 22) / 2, height / 2 + 1);
     _getch();
 }
 
 void showOption2(int width, int height) {
     clearScreen();
-    show_text("You choised 1!", (width - 22) / 2, height / 2);
+    show_text("You Chosen 2!", (width - 22) / 2, height / 2);
     show_text("Press any key...", (width - 22) / 2, height / 2 + 1);
     _getch();
 }
@@ -246,6 +250,10 @@ The engine has an assistant for assembling and running the project. But first yo
 After assembling, build_tool.exe will appear in the main project folder, run it. Select the `Build and Run` item with the arrows. If there are no errors and `g++` is installed, the project will build and run.
 
 This assembly only builds for this computer. For release, select `Build Release (static)`. NOTE, THERE IS A STATIC LINK FIRST! Your assembled release will appear in the `build` folder.
+
+# License
+
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
 <div align="center">
 
