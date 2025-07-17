@@ -1,5 +1,5 @@
 #include "menu.h"
-#include "../console_utils.h" // путь к файлам с выводом
+#include "../console_utils.h"
 #include <iostream>
 
 Menu::Menu(const std::vector<std::string> &buttonTexts,
@@ -23,7 +23,7 @@ void Menu::draw(int x, int y) {
         if (buttons[i].selected)
             line += symbolSelected;
         else
-            line += ' '; // или symbolUnselected
+            line += ' ';
 
         line += " " + buttons[i].text;
 

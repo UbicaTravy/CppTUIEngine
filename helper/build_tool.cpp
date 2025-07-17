@@ -4,10 +4,10 @@
 #include <string>
 #include <windows.h>
 #include <conio.h>
-#include <cstdlib> // для system()
+#include <cstdlib>
 
-const std::string ENGINE_INFO = "Powered by CppTUI Engine (github.com/UbicaTravy/CppTUI)";
-const std::string COMPANY_INFO = "Maked by ANTI-TERROR Studio, 2025";
+const std::string ENGINE_INFO = "Powered by CppTUI Engine (https://github.com/UbicaTravy/CppTUIEngine)";
+const std::string COMPANY_INFO = "Maked by KillerGrass, 2025";
 
 void executeCommand(const std::string& command) {
     system(command.c_str());

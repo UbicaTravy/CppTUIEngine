@@ -1,7 +1,7 @@
 /*
  * CppTUI - Lightweight Text-based User Interface library for C++
  * 
- * Originally developed by ANTI-TERROR Studio (https://github.com/UbicaTravy/CppTUI/tree/v0.1_BETA-TEST)
+ * Originally developed by KillerGrass (https://github.com/UbicaTravy/CppTUIEngine)
  * 
  * License: This code is provided as-is under MIT License.
  * You can freely use, modify, and distribute it in your projects,
@@ -19,7 +19,7 @@ void getConsoleSize(int &width, int &height) {
         width = csbi.srWindow.Right - csbi.srWindow.Left + 1;
         height = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
     } else {
-        width = height = 80; // дефолтные размеры
+        width = height = 80;
     }
 }
 
@@ -47,7 +47,7 @@ void setColor(int colorText, int colorBackground) {
 }
 
 void resetColor() {
-    setColor(15, 0); // белый текст на черном фоне по умолчанию
+    setColor(15, 0);
 }
 
 void show_text(const std::string &text, int x, int y) {

@@ -16,8 +16,8 @@ class Menu {
 private:
     std::vector<Button> buttons;
     int currentIndex;
-    char symbolSelected;   // символ для выбранной кнопки (например, '*')
-    char symbolUnselected; // символ для невыбранных (например, ' ')
+    char symbolSelected;
+    char symbolUnselected;
 public:
     Menu(const std::vector<std::string> &buttonTexts,
          char selectedSymbol='*',
