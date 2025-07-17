@@ -35,7 +35,7 @@ Good! You installed CppTUIEngine on your computer.
 CppTUIEngine/
  |helper/
  |-build_tool.cpp
- |-comp.bat <--- It building just build_tool.cpp!
+ |-comp.cmd <--- It building just build_tool.cpp!
  |menu/
  |-menu.cpp
  |-menu.h

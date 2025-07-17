@@ -36,7 +36,7 @@ git clone https://github.com/UbicaTravy/CppTUIEngine
 CppTUIEngine/
  |helper/
  |-build_tool.cpp
- |-comp.bat <--- Он собирает только build_tool.cpp!
+ |-comp.cmd <--- Он собирает только build_tool.cpp!
  |menu/
  |-menu.cpp
  |-menu.h
