@@ -7,11 +7,10 @@
 #include <random>
 #include <sstream>
 
-const std::string ENGINE_INFO = "Powered by CppTUI Engine (github.com/UbicaTravy/CppTUI)";
-const std::string COMPANY_INFO = "Maked by ANTI-TERROR Studio, 2025";
+const std::string ENGINE_INFO = "Powered by CppTUI Engine (https://github.com/UbicaTravy/CppTUIEngine)";
+const std::string COMPANY_INFO = "Maked by KillerGrass, 2025";
 
-void drawGameScreen(int width, int height, const std::string& title, const std::string& attemptsText, 
-                   const std::string& hint, const std::string& numberText, const std::string& controls) {
+void drawGameScreen(int width, int height, const std::string& title, const std::string& attemptsText, const std::string& hint, const std::string& numberText, const std::string& controls) {
     clearScreen();
 	
     int titleX = (width - static_cast<int>(title.length())) / 2;
@@ -23,7 +22,6 @@ void drawGameScreen(int width, int height, const std::string& title, const std::
 }
 
 void playGame(int& prevWidth, int& prevHeight) {
-    // Генерация случайного числа от 1 до 100
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> distrib(1, 100);
@@ -42,7 +40,6 @@ void playGame(int& prevWidth, int& prevHeight) {
             prevHeight = height;
         }
         
-        // Подготовка текста для отображения
         std::string title = "Guess the Number (1-100)";
         std::string attemptsText = "Attempts: " + std::to_string(attempts);
         std::string hint;
@@ -61,30 +58,27 @@ void playGame(int& prevWidth, int& prevHeight) {
         std::string numberText = "Current guess: " + std::to_string(guess);
         std::string controls = "Use UP/DOWN to change number, ENTER to guess";
         
-        // Отрисовка экрана
         drawGameScreen(width, height, title, attemptsText, hint, numberText, controls);
         
         if (!gameOver) {
-            // Ожидание ввода
             while (true) {
                 if (_kbhit()) {
                     int ch = _getch();
-                    if (ch == 224 || ch == 0) { 
+                    if (ch == 224 || ch == 0) {
                         ch = _getch();
-                        if (ch == 72) { // Up arrow
+                        if (ch == 72) {
                             if (guess < 100) guess++;
                             break;
-                        } else if (ch == 80) { // Down arrow
+                        } else if (ch == 80) {
                             if (guess > 1) guess--;
                             break;
                         }
-                    } else if (ch == '\r') { // Enter key
+                    } else if (ch == '\r') {
                         attempts++;
                         break;
                     }
                 }
                 
-                // Проверка изменения размеров во время ожидания ввода
                 int newWidth, newHeight;
                 getConsoleSize(newWidth, newHeight);
                 if (newWidth != width || newHeight != height) {
@@ -98,9 +92,7 @@ void playGame(int& prevWidth, int& prevHeight) {
                 Sleep(50);
             }
         } else {
-            // Конец игры
-            show_text("Press any key to return to menu...", 
-                     (width - 32) / 2, height / 2 + 2);
+            show_text("Press any key to return to menu...", (width - 32) / 2, height / 2 + 2);
             _getch();
         }
     }
@@ -116,8 +108,7 @@ void drawSettingsScreen(int width, int height) {
     std::string msg = "No settings available yet!";
     show_text(msg, (width - static_cast<int>(msg.length())) / 2, height / 2);
     
-    show_text("Press any key to return to menu...", 
-             (width - 32) / 2, height / 2 + 2);
+    show_text("Press any key to return to menu...", (width - 32) / 2, height / 2 + 2);
 }
 
 void showSettings(int& prevWidth, int& prevHeight) {
@@ -130,11 +121,10 @@ void showSettings(int& prevWidth, int& prevHeight) {
     
     while (true) {
         if (_kbhit()) {
-            _getch(); // Любая клавиша для выхода
+            _getch();
             break;
         }
         
-        // Проверка изменения размеров
         int newWidth, newHeight;
         getConsoleSize(newWidth, newHeight);
         if (newWidth != width || newHeight != height) {
@@ -152,7 +142,6 @@ void showSettings(int& prevWidth, int& prevHeight) {
 int main() {
     int prevWidth = 0, prevHeight = 0;
 
-    // Меню
     std::vector<std::string> menuItems = {"Play Game", "Settings", "Exit"};
     Menu menu(menuItems);
 
@@ -165,54 +154,48 @@ int main() {
             prevHeight = height;
             clearScreen();
 
-            // Заголовок
 			std::string title = "Main Menu";
 			int titleX = (width - static_cast<int>(title.length())) / 2;
 			show_text(title, titleX, 2);
 
-			// Меню
-			int menuX = (width - 20) / 2; 
+			int menuX = (width - 20) / 2;
 			int menuY = height / 2 - static_cast<int>(menuItems.size()/2);
 			menu.draw(menuX, menuY);
 
-			// Информация о движке внизу экрана
 			int engineInfoX = (width - static_cast<int>(ENGINE_INFO.length())) / 2;
 			show_text(ENGINE_INFO, engineInfoX, height - 2);
 			
-			// Информация о движке внизу экрана
 			int companyInfoX = (width - static_cast<int>(COMPANY_INFO.length())) / 2;
 			show_text(COMPANY_INFO, companyInfoX, height - 1);
 		}
 
         if (_kbhit()) {
             int ch = _getch();
-            if (ch == 224 || ch == 0) { 
+            if (ch == 224 || ch == 0) {
                 ch = _getch();
-                if (ch == 72) { // Up arrow
+                if (ch == 72) {
                     menu.moveUp();
-                } else if (ch == 80) { // Down arrow
+                } else if (ch == 80) {
                     menu.moveDown();
                 }
-                // Перерисовка после навигации
                 clearScreen();
                 std::string title = "Main Menu";
                 int titleX = (width - static_cast<int>(title.length())) / 2;
                 show_text(title, titleX, 2);
-                int menuX = (width - 20) / 2; 
+                int menuX = (width - 20) / 2;
                 int menuY = height / 2 - static_cast<int>(menuItems.size()/2);
                 menu.draw(menuX, menuY);
-            } else if (ch == '\r') { // Enter key
+            } else if (ch == '\r') {
                 int selectedIdx = menu.getSelectedIndex();
 
-                if (selectedIdx == 0) { 
+                if (selectedIdx == 0) {
                     playGame(prevWidth, prevHeight);
-                } else if (selectedIdx == 1) { 
+                } else if (selectedIdx == 1) {
                     showSettings(prevWidth, prevHeight);
-                } else if (selectedIdx == 2) { 
-                    break; // Выход
+                } else if (selectedIdx == 2) {
+                    break;
                 }
                 
-                // После возврата из игры/настроек перерисовываем меню
                 clearScreen();
                 getConsoleSize(width, height);
                 prevWidth = width;
@@ -220,13 +203,11 @@ int main() {
                 std::string title = "Main Menu";
                 int titleX = (width - static_cast<int>(title.length())) / 2;
                 show_text(title, titleX, 2);
-                int menuX = (width - 20) / 2; 
+                int menuX = (width - 20) / 2;
                 int menuY = height / 2 - static_cast<int>(menuItems.size()/2);
                 menu.draw(menuX, menuY);
             }
         }
-
-        Sleep(100);
     }
 
     return 0;
